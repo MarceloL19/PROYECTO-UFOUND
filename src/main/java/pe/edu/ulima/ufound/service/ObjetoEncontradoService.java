@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import pe.edu.ulima.ufound.model.ObjetoEncontrado;
 import pe.edu.ulima.ufound.model.RegistroObjetoEncontradoForm;
+import pe.edu.ulima.ufound.model.TipoObjeto;
 import pe.edu.ulima.ufound.model.Usuario;
 import pe.edu.ulima.ufound.repository.ObjetoEncontradoRepository;
 
@@ -15,10 +16,13 @@ public class ObjetoEncontradoService {
 
     private final ObjetoEncontradoRepository objetoEncontradoRepository;
     private final UploadService uploadService;
+    private final EstadoObjetoService estadoObjetoService;
 
-    public ObjetoEncontradoService(ObjetoEncontradoRepository objetoEncontradoRepository, UploadService uploadService) {
+    public ObjetoEncontradoService(ObjetoEncontradoRepository objetoEncontradoRepository, UploadService uploadService,
+                                   EstadoObjetoService estadoObjetoService) {
         this.objetoEncontradoRepository = objetoEncontradoRepository;
         this.uploadService = uploadService;
+        this.estadoObjetoService = estadoObjetoService;
     }
 
     @Transactional
@@ -33,7 +37,9 @@ public class ObjetoEncontradoService {
         objeto.setImagenUrl(uploadService.guardarImagenObjetoEncontrado(imagen));
         objeto.setUsuario(usuario);
 
-        return objetoEncontradoRepository.save(objeto);
+        ObjetoEncontrado guardado = objetoEncontradoRepository.save(objeto);
+        estadoObjetoService.registrarEstadoInicial(TipoObjeto.ENCONTRADO, guardado.getIdObjeto(), guardado.getEstado(), usuario);
+        return guardado;
     }
 
     @Transactional(readOnly = true)

@@ -25,8 +25,8 @@
         <a th:if="${usuario.rol.name() == 'ESTUDIANTE'}" th:href="@{/objetos-perdidos/mis-reportes}" th:classappend="${active == 'objetos'} ? ' active' : ''">Mis objetos perdidos</a>
         <a th:if="${usuario.rol.name() == 'SEGURIDAD'}" th:href="@{/objetos-encontrados/registrar}" th:classappend="${active == 'hallazgo'} ? ' active' : ''">Registrar hallazgo</a>
         <a th:if="${usuario.rol.name() == 'SEGURIDAD'}" th:href="@{/objetos-encontrados}" th:classappend="${active == 'encontrados'} ? ' active' : ''">Objetos encontrados</a>
-        <a th:if="${usuario.rol.name() == 'OFICINA'}" href="#">Panel admin</a>
-        <a th:if="${usuario.rol.name() == 'OFICINA'}" href="#">Objetos</a>
+        <a th:if="${usuario.rol.name() == 'OFICINA'}" th:href="@{/oficina/estados}" th:classappend="${active == 'estados'} ? ' active' : ''">Panel admin</a>
+        <a th:if="${usuario.rol.name() == 'OFICINA'}" th:href="@{/oficina/estados}" th:classappend="${active == 'estados'} ? ' active' : ''">Estados</a>
         <a href="#">Buscar</a>
     </nav>
 </aside>
