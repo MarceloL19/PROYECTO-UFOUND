@@ -6,6 +6,20 @@ Sistema web para la gestion de objetos perdidos en la Universidad de Lima.
 
 Modulo base de autenticacion y control de acceso por roles.
 
+## EPIC 2
+
+Registro de objetos perdidos exclusivo para usuarios con rol `ESTUDIANTE`.
+
+Incluye:
+
+- formulario web con Thymeleaf;
+- entidad `ObjetoPerdido`;
+- categorias y ubicaciones como enums;
+- guardado en MySQL;
+- asociacion con el usuario autenticado;
+- carga opcional de imagen en `uploads/objetos-perdidos`;
+- listado de reportes registrados por el estudiante.
+
 Tecnologias:
 
 - Java 17
@@ -22,7 +36,7 @@ Base de datos:
 
 Usuarios de prueba:
 
-- `marcelo@aloe.ulima.edu.pe` / `123456` / ESTUDIANTE
+- `20235694@aloe.ulima.edu.pe` / `123456` / ESTUDIANTE
 - `seguridad@ulima.edu.pe` / `123456` / SEGURIDAD
 - `oficina@ulima.edu.pe` / `123456` / OFICINA
 
