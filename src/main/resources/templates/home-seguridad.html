@@ -19,9 +19,21 @@
         <div class="hero-id"><small>CODIGO</small><strong>SEG-045</strong></div>
     </section>
     <section class="stats-grid">
-        <article><span>Registrados hoy</span><strong>0</strong><small>EPIC posterior</small></article>
+        <article><span>Registrados</span><strong th:text="${totalHallazgos}">0</strong><small>Por tu usuario</small></article>
         <article><span>En revision</span><strong>0</strong><small>EPIC posterior</small></article>
         <article><span>Entregados hoy</span><strong>0</strong><small>EPIC posterior</small></article>
+    </section>
+    <section class="actions-grid dashboard-actions">
+        <a class="home-card" th:href="@{/objetos-encontrados/registrar}">
+            <span>+</span>
+            <h2>Registrar hallazgo</h2>
+            <p>Registra objetos encontrados dentro del campus.</p>
+        </a>
+        <a class="home-card" th:href="@{/objetos-encontrados}">
+            <span>#</span>
+            <h2>Objetos encontrados</h2>
+            <p>Visualiza los hallazgos registrados en el sistema.</p>
+        </a>
     </section>
 </main>
 </body>

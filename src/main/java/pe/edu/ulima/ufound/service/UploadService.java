@@ -15,8 +15,17 @@ public class UploadService {
 
     private static final Set<String> EXTENSIONES_PERMITIDAS = Set.of(".png", ".jpg", ".jpeg", ".webp");
     private final Path carpetaObjetosPerdidos = Path.of("uploads", "objetos-perdidos");
+    private final Path carpetaObjetosEncontrados = Path.of("uploads", "objetos-encontrados");
 
     public String guardarImagenObjetoPerdido(MultipartFile imagen) {
+        return guardarImagen(imagen, carpetaObjetosPerdidos, "/uploads/objetos-perdidos/");
+    }
+
+    public String guardarImagenObjetoEncontrado(MultipartFile imagen) {
+        return guardarImagen(imagen, carpetaObjetosEncontrados, "/uploads/objetos-encontrados/");
+    }
+
+    private String guardarImagen(MultipartFile imagen, Path carpeta, String rutaPublica) {
         if (imagen == null || imagen.isEmpty()) {
             return null;
         }
@@ -28,11 +37,11 @@ public class UploadService {
         }
 
         try {
-            Files.createDirectories(carpetaObjetosPerdidos);
+            Files.createDirectories(carpeta);
             String nombreArchivo = UUID.randomUUID() + extension;
-            Path destino = carpetaObjetosPerdidos.resolve(nombreArchivo);
+            Path destino = carpeta.resolve(nombreArchivo);
             Files.copy(imagen.getInputStream(), destino, StandardCopyOption.REPLACE_EXISTING);
-            return "/uploads/objetos-perdidos/" + nombreArchivo;
+            return rutaPublica + nombreArchivo;
         } catch (IOException exception) {
             throw new RegistroObjetoException("No se pudo guardar la imagen del objeto.");
         }

@@ -20,6 +20,20 @@ Incluye:
 - carga opcional de imagen en `uploads/objetos-perdidos`;
 - listado de reportes registrados por el estudiante.
 
+## EPIC 3
+
+Registro y visualizacion de objetos encontrados exclusivo para usuarios con rol `SEGURIDAD`.
+
+Incluye:
+
+- formulario web con Thymeleaf;
+- entidad `ObjetoEncontrado`;
+- guardado en MySQL;
+- asociacion con el usuario de seguridad autenticado;
+- carga opcional de imagen en `uploads/objetos-encontrados`;
+- listado de objetos encontrados;
+- vista de detalle del objeto encontrado.
+
 Tecnologias:
 
 - Java 17
