@@ -17,12 +17,14 @@ public class ObjetoEncontradoService {
     private final ObjetoEncontradoRepository objetoEncontradoRepository;
     private final UploadService uploadService;
     private final EstadoObjetoService estadoObjetoService;
+    private final CoincidenciaService coincidenciaService;
 
     public ObjetoEncontradoService(ObjetoEncontradoRepository objetoEncontradoRepository, UploadService uploadService,
-                                   EstadoObjetoService estadoObjetoService) {
+                                   EstadoObjetoService estadoObjetoService, CoincidenciaService coincidenciaService) {
         this.objetoEncontradoRepository = objetoEncontradoRepository;
         this.uploadService = uploadService;
         this.estadoObjetoService = estadoObjetoService;
+        this.coincidenciaService = coincidenciaService;
     }
 
     @Transactional
@@ -39,6 +41,7 @@ public class ObjetoEncontradoService {
 
         ObjetoEncontrado guardado = objetoEncontradoRepository.save(objeto);
         estadoObjetoService.registrarEstadoInicial(TipoObjeto.ENCONTRADO, guardado.getIdObjeto(), guardado.getEstado(), usuario);
+        coincidenciaService.detectarParaObjetoEncontrado(guardado);
         return guardado;
     }
 

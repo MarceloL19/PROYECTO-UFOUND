@@ -1192,6 +1192,245 @@ textarea:focus {
     text-transform: none;
 }
 
+.results-badge {
+    background: #faf5ff;
+    border-radius: 999px;
+    color: #7e22ce;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 8px 12px;
+}
+
+.matches-grid {
+    display: grid;
+    gap: 16px;
+    margin: 0 auto;
+    max-width: 980px;
+}
+
+.match-card,
+.match-detail-card,
+.notifications-panel {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+
+.match-card {
+    align-items: center;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 92px minmax(0, 1fr);
+    padding: 16px;
+}
+
+.match-thumb {
+    height: 82px;
+    width: 82px;
+}
+
+.match-body {
+    display: grid;
+    gap: 8px;
+}
+
+.match-meta,
+.match-actions,
+.match-score {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.match-meta small,
+.match-body p {
+    color: var(--muted);
+}
+
+.match-body p {
+    margin: 0;
+}
+
+.match-body strong {
+    color: var(--navy);
+}
+
+.level-pill {
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    padding: 6px 10px;
+    text-transform: uppercase;
+}
+
+.level-pill.alto {
+    background: #dcfce7;
+    color: #079455;
+}
+
+.level-pill.medio {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.level-pill.bajo {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.similarity-line {
+    background: #edf2f7;
+    border-radius: 999px;
+    height: 7px;
+    overflow: hidden;
+}
+
+.similarity-line span {
+    background: linear-gradient(90deg, #16a34a, var(--orange));
+    border-radius: inherit;
+    display: block;
+    height: 100%;
+}
+
+.similarity-line.large {
+    height: 10px;
+    margin: 16px 0 24px;
+}
+
+.match-actions .primary-link {
+    min-width: 180px;
+    padding: 11px 16px;
+}
+
+.match-detail-card {
+    margin: 0 auto;
+    max-width: 1060px;
+    padding: 24px;
+}
+
+.match-score strong {
+    color: var(--orange);
+    font-size: 34px;
+}
+
+.match-detail-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.match-detail-grid article h2 {
+    margin: 0 0 12px;
+}
+
+.match-image {
+    height: 280px;
+    margin-bottom: 18px;
+}
+
+.match-detail-grid dl {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+}
+
+.match-detail-grid dt {
+    color: #7c8aa5;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.match-detail-grid dd {
+    border-bottom: 1px solid #e2e8f0;
+    margin: -6px 0 0;
+    padding-bottom: 10px;
+}
+
+.notifications-panel {
+    display: grid;
+    gap: 12px;
+    margin: 0 auto 22px;
+    max-width: 980px;
+    padding: 18px;
+}
+
+.notifications-panel h2 {
+    color: #7c8aa5;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.notification-card {
+    align-items: start;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    padding: 16px;
+}
+
+.notification-card.unread {
+    border-left: 4px solid var(--orange);
+}
+
+.notification-card.read {
+    opacity: 0.68;
+}
+
+.notification-icon {
+    align-items: center;
+    background: #fff4e8;
+    border-radius: 14px;
+    color: var(--orange);
+    display: flex;
+    font-weight: 900;
+    height: 42px;
+    justify-content: center;
+    width: 42px;
+}
+
+.notification-card h3,
+.notification-card p {
+    margin: 0;
+}
+
+.notification-card p {
+    color: #34445d;
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+.notification-card a,
+.notification-card button {
+    background: transparent;
+    border: 0;
+    color: var(--orange);
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    font-weight: 900;
+    margin: 12px 14px 0 0;
+    padding: 0;
+}
+
+.notification-card time,
+.muted-empty {
+    color: var(--muted);
+}
+
+.muted-empty {
+    margin: 8px 0 0;
+}
+
 @media (max-width: 900px) {
     .app-sidebar {
         position: static;
@@ -1206,6 +1445,7 @@ textarea:focus {
     .lost-layout,
     .found-detail,
     .state-management-grid,
+    .match-detail-grid,
     .stats-grid,
     .office-stats,
     .detail-metrics,
@@ -1227,7 +1467,9 @@ textarea:focus {
 
     .status-header-card,
     .activity-row,
-    .timeline-item {
+    .timeline-item,
+    .match-card,
+    .notification-card {
         grid-template-columns: 1fr;
     }
 
